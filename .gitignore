@@ -218,3 +218,19 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+
+.venv-gpu/
+data/
+*.csv
+*.xlsx
+*.jsonl
+*.gguf
+outputs/
+lead_model*/
+*.m4a
+*.mp3
+*.wav
+transcript*.txt
+.env
