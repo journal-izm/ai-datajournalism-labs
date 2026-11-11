@@ -239,3 +239,8 @@ transcript*.txt
 # 크롤링 결과물 
 press_pdf/
 # after.png
+
+
+
+# unsloth 자동 생성 캐시
+unsloth_compiled_cache/
