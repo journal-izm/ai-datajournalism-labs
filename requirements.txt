@@ -5,6 +5,7 @@ openpyxl
 requests
 beautifulsoup4
 selenium
+pypdf
 openai
 python-dotenv
 jupyter
