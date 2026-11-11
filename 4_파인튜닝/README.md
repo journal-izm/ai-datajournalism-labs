@@ -13,7 +13,7 @@
 ## 한눈에 보는 순서
 
 ```
-① 데이터 나누기  →  ② 학습  →  ③ 내보내기(GGUF)  →  ④ Ollama 준비  →  ⑤ 내 모델 등록  →  ⑥ 비교
+① 데이터 나누기 → ② 학습 → ③ 내보내기(GGUF) → ④ Ollama 준비 → ⑤ 내 모델 등록 → ⑥ 비교 → ⑦ 날씨로 톤 시험
 ```
 
 | 단계 | 어디서 | 만들어지는 것 |
@@ -24,6 +24,7 @@
 | ④ Ollama 준비 | 터미널 | 원본 모델 `qwen2.5:3b` |
 | ⑤ 내 모델 등록 | 터미널 | 내 모델 `mbcsports` |
 | ⑥ 비교 | Jupyter 노트북 `4_compare_results.ipynb` | `answers.jsonl` `compare_report.html` |
+| ⑦ 날씨로 톤 시험 | Jupyter 노트북 `5_weather_tone_test.ipynb` | `weather_report.html` `meteo_report.html` |
 
 > 터미널 여는 법: VS Code에서 `Ctrl` + `` ` `` (숫자 1 왼쪽 키)
 
@@ -128,6 +129,19 @@ RERUN    = False         # True: 저장된 답을 무시하고 다시 묻기
 
 ---
 
+## ⑦ 날씨로 톤 시험 — `5_weather_tone_test.ipynb`
+
+스포츠 리포트로만 배운 모델에 **한 번도 안 본 날씨**를 넣어서, MBC 리드 말투가 따라오는지 봐요.
+
+| 부분 | 넣는 것 | 결과 파일 |
+|---|---|---|
+| ① 날씨 리포트 | `test_weather.jsonl` (MBC 뉴스데스크 날씨 리포트 5건, 이 폴더에 넣기) | `weather_report.html` |
+| ② 날씨 데이터 | Open-Meteo 내일 예보 숫자 (서울·강릉·대전·부산·제주, 가입 필요 없음) | `meteo_report.html` |
+
+첫 칸의 `MY_MODEL`만 확인하고 위에서부터 실행하면 돼요. ②는 정답이 없으니 **메모에 없는 숫자를 지어내지 않았는지**를 가장 먼저 보세요.
+
+---
+
 ## Ollama 명령어 한눈에
 
 | 명령 | 하는 일 |
@@ -171,7 +185,7 @@ RERUN    = False         # True: 저장된 답을 무시하고 다시 묻기
 
 | 종류 | 파일 | 이유 |
 |---|---|---|
-| 데이터 | `*.csv` `*.jsonl` `compare_report.html` | MBC 기사 내용 (내부 학습용) |
+| 데이터 | `*.csv` `*.jsonl` `answers_*.json` `*_report.html` | MBC 기사 내용 (내부 학습용) |
 | 모델 | `lead_model*/` `*.gguf` `outputs/` `unsloth_compiled_cache/` | 용량이 크고, 공개하지 않아요 |
 | 키 | `.env` | OpenAI API 키 |
 
