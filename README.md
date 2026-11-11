@@ -14,7 +14,7 @@
 ## VS Code에서 시작하기 (처음 한 번) — Python 3.12 가상환경 하나
 가상환경 = 이 수업 전용 파이썬 상자. 다른 프로젝트 패키지와 섞이지 않아요. GPU 실습까지 한 환경에서 해요.
 ```bash
-cd 수업코드_데이터저널리즘
+cd ai-datajournalism-labs          # 내려받은(clone) 폴더
 py -3.12 -m venv .venv            # 3.12가 없으면 python.org에서 3.12 설치
 .venv\Scripts\activate
 python -m pip install --upgrade pip
