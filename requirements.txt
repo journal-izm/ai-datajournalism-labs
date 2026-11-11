@@ -4,6 +4,7 @@ seaborn
 openpyxl
 requests
 beautifulsoup4
+selenium
 openai
 python-dotenv
 jupyter
