@@ -234,3 +234,8 @@ lead_model*/
 *.wav
 transcript*.txt
 .env
+
+
+# 크롤링 결과물 
+press_pdf/
+# after.png
