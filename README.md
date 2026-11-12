@@ -8,7 +8,7 @@
 | 1_시각화기초 | Matplotlib · Seaborn 차트 5종 | 필요 없음 |
 | 2_빅데이터_차트문법 | 기사 수 vs 미세먼지, 정직한 차트 규칙 / 3 **[GPU] 기사 제목 뜻으로 묶기** | 1·2 필요 없음 · 3 GPU 권장 |
 | 3_크롤링 | 연습 사이트 크롤링, 보도자료 → 리드 JSONL | 필요 없음 |
-| 4_파인튜닝 | 1 데이터 나누기·모델 비교(Ollama) / 2 코드로 학습(선택) / 3 **[GPU] 속도 비교·학습 중 GPU 지켜보기** | 2·3 GPU 필요 |
+| 4_파인튜닝 | 1 데이터 나누기 / 2 코드로 학습(선택) / 3 **[GPU] 속도 비교·학습 중 GPU 지켜보기** / 4 세 모델 비교(Ollama) / 5 날씨로 톤 시험 — 자세한 순서는 폴더 안 README | 2·3 GPU 필요 · 4·5 Ollama |
 | 5_n8n_카오스보도 | 개표 알림 시뮬레이션, n8n 프롬프트·설정 메모 / 2 **[GPU] 인터뷰 녹음 받아쓰기 → 속보 초안 → 인용 확인** | 2 GPU 권장 |
 
 ## VS Code에서 시작하기 (처음 한 번) — Python 3.12 가상환경 하나
@@ -35,9 +35,9 @@ Whisper는 ffmpeg도 필요해요: `winget install ffmpeg` (설치 후 VS Code �
 ## GPU는 어디서 쓰나요?
 - **pandas·그래프·크롤링**: CPU로 충분해요. GPU가 있어도 빨라지지 않아요.
 - **pandas를 GPU로(선택)**: 환경 준비 칸의 `USE_GPU_PANDAS = True` — Colab GPU 런타임 또는 Linux/WSL + cuDF에서만 동작, 아니면 자동으로 일반 pandas
-- **모델 실행**: Ollama는 GPU가 있으면 알아서 GPU를 써요 (4_파인튜닝/split_data의 모델 비교 칸)
+- **모델 실행**: Ollama는 GPU가 있으면 알아서 GPU를 써요 (4_파인튜닝/4_compare_results · 5_weather_tone_test). 설치는 `4_파인튜닝/setup_ollama.ps1`
 - **임베딩·음성 인식**: 기사 제목 묶기(sentence-transformers), 받아쓰기(Whisper) — GPU면 몇 초~1분, CPU면 수 분~수십 분
 - **모델 학습**: 강의장은 Unsloth Studio(화면), 코드로는 4_파인튜닝/2_train_unsloth_gpu.ipynb (Colab T4 또는 GPU PC)
 
 ## 올리지 않을 것 (.gitignore에 들어 있음)
-크롤링한 원문(.csv, .jsonl), 빅카인즈 엑셀, 녹음·녹취록, 학습한 모델(.gguf, outputs/), API 키(.env)
+크롤링한 원문(.csv, .jsonl), 빅카인즈 엑셀, 녹음·녹취록, 학습한 모델(.gguf, lead_model*/, outputs/), 모델 답·비교표(results/, *_report.html), API 키(.env)
