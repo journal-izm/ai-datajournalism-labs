@@ -1,0 +1,143 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>블라인드 평가: 누가 쓴 리드일까?</title><style>
+body{font-family:"Malgun Gothic",sans-serif;margin:24px auto;max-width:1500px;background:#f7f7f5;color:#222;padding:0 16px}
+h1{font-size:26px} h2{font-size:20px;margin-top:40px;border-top:2px solid #ddd;padding-top:20px}
+.box{background:#fff;border:1px solid #ddd;border-radius:8px;padding:10px 14px;margin:8px 0;line-height:1.6}
+.sum{border-collapse:collapse;background:#fff;margin:10px 0} .sum th,.sum td{border:1px solid #ddd;padding:6px 12px;text-align:center}
+.sum th{background:#18232f;color:#fff}
+.q{background:#fff;border:1px solid #ddd;padding:12px;white-space:pre-wrap;border-radius:8px;line-height:1.6}
+.gold{background:#fff7ed;border-left:6px solid #e8590c;padding:10px 14px;margin:10px 0;line-height:1.7}
+.row{display:flex;gap:12px;align-items:stretch}
+.card{flex:1;background:#fff;border:1px solid #ddd;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.h{color:#fff;font-weight:bold;padding:8px 12px;font-size:17px}
+.ans{white-space:pre-wrap;line-height:1.7;padding:12px;flex:1} .empty{color:#aaa;text-align:center}
+.meta{padding:0 12px 8px;font-size:12px}
+.b{display:inline-block;padding:2px 8px;border-radius:10px;margin:2px 4px 2px 0}
+.ok{background:#d8f3e8;color:#16664c} .no{background:#f6dede;color:#8a2a2a}
+.human{display:block;font-size:13px;color:#555;padding:4px 12px;border-top:1px dashed #eee}
+details summary{cursor:pointer;color:#2563a8;margin:6px 0}
+.key{margin-top:40px;background:#fff;border:2px dashed #999;padding:12px;border-radius:8px} .k td{padding:4px 10px}
+</style></head><body>
+<h1>블라인드 평가: 누가 쓴 리드일까?</h1>
+<p>만든 시각: 2026-11-12 15:53 · 초록 배지 = 리드 형식을 지킴, 빨강 = 확인 필요 (자동 체크는 참고용)</p>
+<p class="box"><b>지시문</b> 보도자료를 읽고 기사 첫 문장(리드)을 한 문장으로 쓰세요.</p>
+<p class="box">블라인드: 문제마다 A·B·C 순서를 새로 섞었어요. 같은 글자라도 문제마다 다른 모델이에요. 다 고른 뒤 맨 아래 정답지를 여세요.</p>
+
+<h2 style="border:none;margin-top:16px">자동 체크 요약</h2><table class="dataframe sum">
+  <thead>
+    <tr style="text-align: right;">
+      <th>모델</th>
+      <th>답한 문제</th>
+      <th>끝인사 없음</th>
+      <th>기자에게 넘김</th>
+      <th>2문장 이하</th>
+      <th>길이 비슷(0.5~2배)</th>
+      <th>입력에 없는 숫자 없음</th>
+      <th>평균 글자 수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>원본 Qwen2.5-3B</td>
+      <td>5/5</td>
+      <td>5/5</td>
+      <td>0/5</td>
+      <td>4/5</td>
+      <td>4/5</td>
+      <td>5/5</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <td>내가 학습한 모델</td>
+      <td>5/5</td>
+      <td>5/5</td>
+      <td>0/5</td>
+      <td>5/5</td>
+      <td>3/5</td>
+      <td>5/5</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <td>gpt-4.1-mini</td>
+      <td>5/5</td>
+      <td>5/5</td>
+      <td>0/5</td>
+      <td>5/5</td>
+      <td>4/5</td>
+      <td>5/5</td>
+      <td>68</td>
+    </tr>
+  </tbody>
+</table>
+<p>자동 체크는 <b>형식</b>만 봐요. <b>사실이 맞는지</b>는 리포트 본문을 펼쳐서 직접 대조하고, 카드 아래 체크박스에 표시하세요.</p>
+<h2>1. 문제 1</h2><details><summary>리포트 본문 보기 (747자)</summary><pre class="q">역대 최장수 캡틴 손흥민의 리더십에 불만을 드러내며 은퇴 소동을 벌였던 김민재와 황인범, 황희찬.
+다음 달 중동 원정 2연전을 앞둔 모레노 임시 감독은 손흥민과 96년생 동기 3인방을 모두 발탁하며 정면 돌파를 선택했습니다.
+[로베르트 모레노/축구대표팀 임시 감독]
+&quot;손흥민과 황인범, 황희찬, 김민재는 경기력 측면에서도, 조국을 위해 뛰겠다는 의지 측면에서도 그렇고 현재 우리가 선택할 수 있는 최고의 선수들입니다.&quot;
+팀 내 문제는 대화를 통해 해결하는 게 원칙이라면서 선수들과 나눈 대화 내용 역시 공개하지 않겠다고 원론적인 입장만 내놨지만
+[로베르트 모레노/축구대표팀 임시 감독]
+&quot;내부에서 일어난 일은 내부에서 해결한다는 게 원칙입니다. 할 말이 있으면 서로 얼굴을 마주하고 직접 해야 합니다.&quot;
+모레노 감독은 주장 교체 가능성엔 단호히 선을 그었습니다.
+[로베르트 모레노/축구대표팀 임시 감독]
+&quot;우리 팀은 매우 건강합니다. 여전히 주장은 손흥민입니다. 덧붙일 말 없습니다.&quot;
+외형적으로는 손흥민에게 힘이 실리는 모양새지만 모레노 감독이 오늘 밤 유럽으로 떠나 김민재와 황인범의 경기를 각각 관전하겠다 밝히면서 96년생 선수들과의 면담 내용에 관심이 쏠리게 됐습니다.
+또 임시 감독 체제에서 치르는 마지막 평가전인 만큼 결과뿐 아니라 대표팀 갈등의 대척점에 있는 선수들의 훈련과 경기력도 주목을 피하기 어려울 걸로 보입니다.
+MBC뉴스 박재웅입니다.
+영상취재: 서두범 / 영상편집: 주예진 / 영상출처: 유튜브 &#x27;레드재민TV&#x27;</pre></details><div class="gold"><b>정답 리드</b> 다음 달 중동 원정에 나서는 축구대표팀 명단이 발표됐습니다. 모레노 감독은 손흥민과 은퇴 소동을 벌인 96년생 3인방 선수들을 모두 발탁해 정면 돌파 의지를 내비쳤는데요. 주장은 손흥민이라고 못을 박았습니다. 박재웅 기자입니다.</div><div class="row"><div class="card"><div class="h" style="background:#18232f">A</div><div class="ans">김민재와 황인범, 황희찬이 보수적으로 보이는 리더십 문제를 제기하며 손흥민과 함께 최고의 선수로 선택된 96년생 동기 3인방의 은퇴 소동을 둘러싼 갈등이 모레노 임시 감독의 결정을 더욱 복잡하게 만들었다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">B</div><div class="ans">축구대표팀 임시 감독을 맡은 모레노 감독이 손흥민의 주장직을 유지할 것이라는 입장을 밝혔습니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b no">길이 0.4배</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">C</div><div class="ans">모레노 축구대표팀 임시 감독이 손흥민과 96년생 동기 선수들을 모두 발탁하며 주장 손흥민 체제를 유지하고 내부 갈등 해결에 정면 돌파를 선택했다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div></div><h2>2. 문제 2</h2><details><summary>리포트 본문 보기 (753자)</summary><pre class="q">1차전 패배 후 3연승으로 사실상 9부 능선을 넘은 삼성.
+상승세는 멈출 줄을 몰랐습니다.
+한 점 뒤지던 3회, 구자욱의 적시타로 동점을 만든 뒤, 곧바로 디아즈가 역전 적시타를 쏘아 올리며 단숨에 분위기를 휘어잡았습니다.
+다급해진 kt는 4회부터 선발 자원 고영표를 투입하는 승부수를 띄웠지만, 불붙은 삼성 타선을 막기엔 역부족이었습니다.
+5회 베테랑 최형우를 시작으로 김영웅과 이재현이 연속 적시타를 퍼부었고 이어진 만루 상황에서 강민호의 평범한 땅볼에 kt 내야진이 치명적인 실책을 범하며 자멸했습니다.
+삼성은 이어 김지찬이 우중간 3루타로 두 점을 더 불러들이는 등, 5회에만 타자일순하며 8점을 몰아쳐 일찌감치 승부를 정리했습니다.
+9회 마지막 아웃카운트를 잡아내면서, 삼성은 지난 2014년 이후 12년 만에 통산 9번째 우승을 확정했습니다.
+8년 만에 나온 정규시즌 2위의 역전 우승에 홈팬들은 열광했고, 선수로 우승만 6번을 이뤄낸 박진만 감독은 부임 네 시즌 만에 감독으로도 우승을 달성했습니다.
+[박진만/삼성 감독]
+&quot;우승이라는 것은 우리 선수들이 만들어주는 것이기 때문에 너무 고맙게 생각하고, 우리 선수들이랑 삼성 라이온즈에 뼈를 묻고 싶습니다.&quot;
+다리 부상을 딛고 맹타를 휘두른 주장 구자욱은 생애 첫 우승과 함께 한국시리즈 MVP에 오르는 겹경사를 누렸습니다.
+라이온즈파크가 문을 연 지 10년이 된 올해.
+이곳에서 삼성이 감격적인 첫 우승을 장식하며 짜릿했던 가을야구 드라마가 막을 내렸습니다.
+MBC뉴스 김태운입니다.</pre></details><div class="gold"><b>정답 리드</b> 프로야구 한국 시리즈에서 삼성이 kt를 꺾고 통산 9번째 우승을 달성했습니다. 정규시즌 2위로 열세가 예상됐지만 1패 뒤 4연승으로 짜릿한 역전 우승을 이루며, 12년 만에 정상에 복귀했는데요. 김태운 기자가 보도합니다.</div><div class="row"><div class="card"><div class="h" style="background:#18232f">A</div><div class="ans">삼성은 지난 2014년 이후 12년 만에 정규시즌 우승을 확정하고, 한국시리즈 MVP에 오른 구자욱의 생애 첫 우승에 환호를 이어갔습니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">B</div><div class="ans">삼성 라이온즈가 1차전 패배 후 3연승을 이어가며 9부 능선을 넘어서며, 결국 통산 9번째 우승을 차지한 후에야 깨달은 KT의 역전 도전이 실패한 것.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">C</div><div class="ans">삼성 라이온즈가 1차전 패배 후 3연승을 거두며 12년 만에 통산 9번째 한국시리즈 우승을 확정했다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b no">길이 0.5배</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div></div><h2>3. 문제 3</h2><details><summary>리포트 본문 보기 (845자)</summary><pre class="q">135cm의 작은 체구에도 너비 10cm의 평균대 위에서 강단 있는 연기를 펼친 황서현.
+자신감은 있었지만 40년 만의 아시안게임 금메달일 줄은 몰랐습니다.
+[황서현/여자기계체조 대표팀]
+&quot;금메달은 상상 못했어요. 금메달은 상상 못했고 진짜 잘하면 동메달까지는 생각해 봤어요.&quot;
+새로운 스타 탄생에 반응도 폭발적입니다.
+황서현의 금메달 소식을 전한 유튜브 뉴스 영상은 하루 만에 조회수 350만 회를 넘어섰습니다.
+우승 직후 태극기를 들고 무대에 오르려다 제지당하는 장면까지 화제가 됐는데 황서현이 자신의 SNS에 직접 머쓱했다는 말을 남기기도 했습니다.
+모두 깜짝 금메달이라고 말하지만 사실 묵묵히 버텨온 10년의 세월이 있습니다.
+7살 때 처음 기계체조를 시작해 남다른 재능을 인정받았지만 반복되는 고된 훈련에 지치는 날이 많았습니다.
+[황서현/여자기계체조 대표팀]
+&quot;힘들 때 많았어요. 그냥 중학교 때 매일매일 훈련해야 하는 게 가장 힘들었어요.&quot;
+남들보다 작은 키도 고민이었습니다.
+[오윤희/황서현 선수 어머니]
+&quot;분명히 후회할 날이 온다고 포기하게 되면. 그러니까 포기하지 말고 끝까지 해보자고. 응원만 했어요, 옆에서.&quot;
+그리고 &#x27;작지만 누구보다 큰 아이&#x27;라는 엄마의 말처럼 금메달의 꿈을 이뤘습니다.
+곧바로 귀국길에 오른 황서현은 다음 달 전국체전과 세계선수권에 출전할 예정입니다.
+오늘 입국장에서도 수많은 취재진 앞에서 가장 큰 주목을 받은 황서현은, 학교생활을 병행하며 다음 도약을 준비합니다.
+[황서현/여자기계체조 대표팀]
+&quot;기계체조 많이 알아주시고 항상 응원해 주셔서 감사합니다.&quot;
+나고야에서 MBC뉴스 곽승규입니다.
+영상취재: 김신영, 김준형 / 영상편집: 김지윤 / 영상제공: 대한체육회</pre></details><div class="gold"><b>정답 리드</b> 여자 기계체조 평균대에서 금메달을 따낸 &#x27;작은 거인&#x27; 황서현 선수가 하루 사이에 말 그대로 깜짝 스타로 떠올랐습니다. 오늘 입국장에서도 가장 큰 주목을 받았던 황서현의 금메달 뒷이야기를 일본 나고야 현지에서 곽승규 기자가 전합니다.</div><div class="row"><div class="card"><div class="h" style="background:#18232f">A</div><div class="ans">135cm의 작은 체구에도 강단 위에서 너비 10cm의 평균대를 넘어서는 황서현의 강한 자신감과 40년의 투혼으로 이뤄진 금메달 소식이 세상에 알려졌다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">B</div><div class="ans">여자기계체조 황서현 선수의 아시안게임 금메달이 화제가 됐습니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b no">길이 0.3배</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">C</div><div class="ans">135cm의 작은 체구에도 불구하고 40년 만에 아시안게임 여자기계체조 금메달을 획득한 황서현이 새로운 스타로 떠올랐다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div></div><h2>4. 문제 4</h2><details><summary>리포트 본문 보기 (797자)</summary><pre class="q">우루과이전 완패에 이어 피파 랭킹 48위 베네수엘라와 득점없이 무승부.
+김민재는 이례적으로 경기 후 쓴소리를 쏟아냈습니다.
+[김민재/축구대표팀]
+&quot;솔직히 수비 선수들 보면 불쌍하고 다 같이 싸우는 느낌이 들지 않아서 팀 수준을 올릴 수 있는 방법은 다 같이 그냥 머리 처박고 열심히 해야 되는 것 같습니다.&quot;
+김민재는 후반 35분 교체될 당시에도 절친 황인범이 말릴 정도로 거칠게 불만을 드러냈고, 축구화까지 내던지는 모습도 중계 화면에 포착됐습니다.
+[김민재/축구대표팀]
+&quot;전술적인 문제가 아니고 다 같이 싸워야 한다고 이야기를 드리는 것 같아요. 지금 몇 년 동안 그런 문제가 계속 이루어지고 있다고 생각해서‥&quot;
+공격수들의 전방 압박이나 수비 가담이 부족하다고 저격한 듯한 김민재의 발언에 주장 손흥민은 서로의 입장이 다른 것뿐이라고 말을 아꼈습니다.
+[손흥민/축구대표팀]
+&quot;공격수들 입장도 또 다를 거예요. 수비수 입장에서 더 많이 힘들었던 것 같은데 고쳐 나가야 될 부분인 것 같습니다.&quot;
+반면 황인범은 협회장 부재를 포함한 한국 축구의 현실까지 언급하면서 답답함을 호소했습니다.
+[황인범/축구대표팀]
+&quot;몸도 힘들고, 마음도 힘들고, 감독님도 임시 감독님으로 오셨다 보니 어떻게 될지 미래를 모르는 상황이고 선수들 입장에서 쉽지 않은 것 같아요.&quot;
+모레노 임시 감독이 맡은 6경기 중 절반인 3경기가 지났지만 사령탑이 바뀌어도 월드컵 때와는 달라지지 않은 &#x27;모래알 조직력&#x27;에, 벌써부터 선수들의 불만이 터져나오면서 모레노호는 시작부터 흔들리고 있습니다.
+MBC뉴스 박재웅입니다.
+영상취재: 박다원 / 영상편집: 강내윤</pre></details><div class="gold"><b>정답 리드</b> 축구대표팀이 우루과이에 완패한 데 이어 베네수엘라와도 졸전 끝에 득점 없이 비겼는데요. 김민재 선수가 축구화를 집어던지며 화를 낸 뒤 경기 후 작심발언을 쏟아냈습니다. 박재웅 기자입니다.</div><div class="row"><div class="card"><div class="h" style="background:#18232f">A</div><div class="ans">김민재가 우루과이전에서 피파 랭킹 48위의 베네수엘라와의 무승부를 보고, 수비 선수들의 부족함을 지적하며 팀의 성장을 위해선 다 함께 노력해야 한다는 입장을 분명히 한 후, 김민재의 불만이 김민재와 손흥민, 황인범 등 선수들의 불만을 불러일으키며 모레노호의 조직력 문제를 드러내는 기사 첫 문장은 &quot;김민재가 우루과이전에서 베네수엘라와의 무승부를 보고, 수비 선수들의 부족함을 지적하며 팀의 성장을 위해선 다 함께 노력해야 한다는 입장을 분명히 한 후, 선수들의 불만이 불러일으키며 모레노호의 조직력 문제를 드러내는 기사&quot;입니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b no">3문장</span><span class="b no">길이 2.8배</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">B</div><div class="ans">한국 축구대표팀이 우루과이전 완패에 이어 FIFA 랭킹 48위 베네수엘라와 득점 없이 비기며 내부 불화와 조직력 문제를 드러냈다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">C</div><div class="ans">축구대표팀이 우루과이전에 이어 베네수엘라전에서도 무승부를 기록하며, 모레노 감독의 임시감독 시절이 시작되자마자 불만이 쏟아지고 있습니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div></div><h2>5. 문제 5</h2><details><summary>리포트 본문 보기 (328자)</summary><pre class="q">준결승에서 세계 9위 일본의 오쿠하라를 만난 안세영.
+구석을 찌르는 스트로크를 앞세워서 첫 게임 21대 12 완승을 거뒀는데요.
+두 번째 게임 초반에 7대 3까지 끌려갔지만, 7연속 득점으로 순식간에 경기를 뒤집고 주도권을 되찾아왔습니다.
+안세영의 매서운 대각선 공격에 연거푸 몸을 날려야 했던 오쿠하라는 지친 모습이었는데요.
+결국 2대 0 완승으로 결승 진출.
+올 시즌 49연승 행진을 이어간 안세영은 65승 1패의 경이적인 승률도 과시했습니다.
+경쟁자 야마구치와 왕즈이가 일찌감치 탈락하면서 대회 3회 연속 우승과 함께 올 시즌 10번째 우승 가능성도 높아졌습니다.
+영상편집: 김재환</pre></details><div class="gold"><b>정답 리드</b> 배드민턴 안세영 선수가 49연승 행진 속에 프랑스오픈 결승에 올랐는데요. 대회 3연패와 함께 시즌 10번째 우승을 눈앞에 두게 됐습니다.</div><div class="row"><div class="card"><div class="h" style="background:#18232f">A</div><div class="ans">안세영이 세계 9위 오쿠하라를 2대 0으로 완파하며 대회 3회 연속 우승과 올 시즌 10번째 우승에 한 걸음 다가섰다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">B</div><div class="ans">안세영이 준결승에서 세계 9위의 일본 선수 오쿠하라를 2대 0으로 이기고 결승 진출을 확정지었다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div><div class="card"><div class="h" style="background:#18232f">C</div><div class="ans">여자전 세계랭킹 9위 일본의 오쿠하라를 꺾고, 여자 단식 결승에 오른 안세영 선수는 49연승 행진을 이어갔습니다.</div><div class="meta"><span class="b ok">끝인사 없음</span><span class="b no">넘김 없음</span><span class="b ok">1문장</span><span class="b ok">길이 비슷</span><span class="b ok">입력에 없는 숫자 없음</span></div><label class="human"><input type="checkbox"> 사실 오류 있음</label><label class="human"><input type="checkbox"> 가장 좋은 답</label></div></div>
+<details class="key"><summary>🔑 정답지 열기 (다 고른 뒤에)</summary><table class="k"><tr><td>1번</td><td>A = 원본 Qwen2.5-3B</td><td>B = 내가 학습한 모델</td><td>C = gpt-4.1-mini</td></tr><tr><td>2번</td><td>A = 내가 학습한 모델</td><td>B = 원본 Qwen2.5-3B</td><td>C = gpt-4.1-mini</td></tr><tr><td>3번</td><td>A = 원본 Qwen2.5-3B</td><td>B = 내가 학습한 모델</td><td>C = gpt-4.1-mini</td></tr><tr><td>4번</td><td>A = 원본 Qwen2.5-3B</td><td>B = gpt-4.1-mini</td><td>C = 내가 학습한 모델</td></tr><tr><td>5번</td><td>A = gpt-4.1-mini</td><td>B = 원본 Qwen2.5-3B</td><td>C = 내가 학습한 모델</td></tr></table></details>
+</body></html>
